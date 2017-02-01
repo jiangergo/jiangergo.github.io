@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="Jiangergo&#39;s Blog"/>
+      <meta property="og:title" content="Cocoapods install之后不生成.xcworkspace文件解决"/>
   
   <!--Open Graph Description-->
   
@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="Jiangergo&#39;s Blog"/>
   <!--Type page-->
   
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content="article" />
   
   <!--Page Cover-->
   
@@ -33,7 +33,7 @@
 
   <!-- Title -->
   
-  <title>Jiangergo&#39;s Blog</title>
+  <title>Cocoapods install之后不生成.xcworkspace文件解决 - Jiangergo&#39;s Blog</title>
 
 
   <link rel="shortcut icon" href="http://www.iconsvg.com/Public/1333158660926332928/%E4%BB%99%E4%BA%BA%E6%8E%8C_cactus3.svg">
@@ -105,60 +105,85 @@
 
 
   <!-- Main Content -->
-  <div class="site-content home">
-  <main class="content-area">
-    
-      
-        <div class="even">
-          <div class="container">
-  <article class="post">
-    
-    <h1 class="entry-title">
-      <a href="/2017/02/02/Cocoapods install之后不生成.xcworkspace文件解决/" rel="bookmark">
-        Cocoapods install之后不生成.xcworkspace文件解决  
-      </a>
-    </h1>
-    
-    
-    <p class="posted-on">
-    2017-02-02
-    </p>
-    <div class="tags-links">
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            Cocoapods install之后不生成.xcworkspace文件解决
+            
+          </h1>
+          <p class="posted-on">
+          2017-02-02
+          </p>
+          <div class="tags-links">
+            
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content">
+          <blockquote>
+<p>首先，祝大家新年快乐，鸡年大吉！</p>
+</blockquote>
+<p>感觉有一段时间没有动电脑了，良心不安，于是决定写个 Demo 练练手。<br>结果发现 cocoapods 执行了pod install 之后没有生成 .xcworkspace 文件。</p>
+<p>#####这样：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/2672361-43837d8434d6feeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>#####错误提示：</p>
+<pre><code>localhost:Test-Crash Jiangergo$ pod init
+localhost:Test-Crash Jiangergo$ pod install --no-repo-update
+Analyzing dependencies
+Downloading dependencies
+Installing AFNetworking (3.1.0)
+Generating Pods project
+Abort trap: 6
+</code></pre><p><br></p>
+<p>#####解决方案：<br>Removing all cocoapods gems：</p>
+<pre><code>sudo gem uninstall cocoapods
+sudo gem uninstall cocoapods-core
+sudo gem uninstall cocoapods-deintegrate
+sudo gem uninstall cocoapods-downloader
+sudo gem uninstall cocoapods-plugins
+sudo gem uninstall cocoapods-search
+sudo gem uninstall cocoapods-stats
+sudo gem uninstall cocoapods-try
+sudo gem uninstall cocoapods-trunk
+</code></pre><p>Then installing latest pre release version:</p>
+<pre><code>sudo gem install cocoapods --pre
+</code></pre><p>显示以下，成功！</p>
+<pre><code>Done installing documentation for nanaimo, claide, 
+CFPropertyList, activesupport, xcodeproj, ruby-macho, 
+molinillo, gh_inspector, fourflusher, cocoapods-trunk, 
+cocoapods-downloader, cocoapods-deintegrate, cocoapods-
+core, cocoapods after 16 seconds
+14 gems installed
+</code></pre><p>赶快试试 pod install 吧！</p>
+<p><a href="http://www.jianshu.com/p/9efffd29b62e" target="_blank" rel="external">Jiangergo的简书</a></p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
       
     </div>
-  </article>
-</div>
-        </div> 
+    <!-- Pre or Next -->
+    <div class="nav-links">
       
-    
       
-        <div class="odd">
-          <div class="container">
-  <article class="post">
-    
-    <h1 class="entry-title">
-      <a href="/2016/11/28/start/" rel="bookmark">
-        开始  
-      </a>
-    </h1>
-    
-    
-    <p class="posted-on">
-    2016-11-28
-    </p>
-    <div class="tags-links">
-      
-    </div>
-  </article>
-</div>
+        <div class="nav-next">
+          <a href="/2016/11/28/start/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
-    
+    </div>
 
-    
-
-  </main>
+  </div>
 </div>
+
 
   <!-- Footer -->
   <!-- Footer-widgets -->
