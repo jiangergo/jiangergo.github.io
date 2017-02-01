@@ -130,10 +130,11 @@
           <blockquote>
 <p>首先，祝大家新年快乐，鸡年大吉！</p>
 </blockquote>
+<p><br></p>
 <p>感觉有一段时间没有动电脑了，良心不安，于是决定写个 Demo 练练手。<br>结果发现 cocoapods 执行了pod install 之后没有生成 .xcworkspace 文件。</p>
-<p>#####这样：</p>
+<p>这样：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/2672361-43837d8434d6feeb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>#####错误提示：</p>
+<p>错误提示：</p>
 <pre><code>localhost:Test-Crash Jiangergo$ pod init
 localhost:Test-Crash Jiangergo$ pod install --no-repo-update
 Analyzing dependencies
@@ -142,7 +143,8 @@ Installing AFNetworking (3.1.0)
 Generating Pods project
 Abort trap: 6
 </code></pre><p><br></p>
-<p>#####解决方案：<br>Removing all cocoapods gems：</p>
+<p>解决方案：</p>
+<p>Removing all cocoapods gems：</p>
 <pre><code>sudo gem uninstall cocoapods
 sudo gem uninstall cocoapods-core
 sudo gem uninstall cocoapods-deintegrate
