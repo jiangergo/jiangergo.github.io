@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="开始"/>
+      <meta property="og:title" content="如何保证HTTP传输安全"/>
   
   <!--Open Graph Description-->
   
@@ -33,7 +33,7 @@
 
   <!-- Title -->
   
-  <title>开始 - Jiangergo&#39;s Blog</title>
+  <title>如何保证HTTP传输安全 - Jiangergo&#39;s Blog</title>
 
 
   <link rel="shortcut icon" href="http://www.iconsvg.com/Public/1333158660926332928/%E4%BB%99%E4%BA%BA%E6%8E%8C_cactus3.svg">
@@ -113,7 +113,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            开始
+            如何保证HTTP传输安全
             
           </h1>
           <p class="posted-on">
@@ -127,7 +127,15 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content">
-          <p>作为一个不爱写东西的人，最近看了很多大神的博客，受到了感染，决定开始搞搞博客了。<br>希望日后回过头来看，也是对自己成长的见证。</p>
+          <p>目前大多数网站和 app 的接口都是采用 http 协议，但是 http 协议很容易就可以通过抓包工具监听到内容，甚至篡改内容，为了保证数据不被别人看到和修改，可以通过以下几个方面避免：</p>
+<ul>
+<li><p>加密。<br>比如用户名和密码，我们需要加密，这样即使被抓包监听，他们也不知道原始数据是什么。<br>简单的 md5 是可以暴力破解的，所以加密方式越复杂就越安全，可以根据需要自由组合。<br>常见的是 md5（不可逆）、aes（可逆）、加盐，<br>例如：username = aes(username)，pwd =md5（pwd + username）</p>
+</li>
+<li><p>签名<br>签名的目的是为了防止篡改，比如<a href="http://www.xxx.com/getnews?id=1，获取" target="_blank" rel="external">http://www.xxx.com/getnews?id=1，获取</a> id=1的内容，如果不签名通过 id=2，就可以获取 id=2的内容。<br>######怎么签名？<br>通常使用 sign ，比如原链接请求的时候加一个 sign 参数，sign=md5(id=1)，服务器接收到请求，验证 sign 是否等于 md5(id=1)，如果等于说明正常请求。<br>不过，这有一个弊端，加入规则被发现，那么就会被伪造，所以适当复杂一点，还是可以提高安全性的。</p>
+</li>
+<li><p>登录态<br>http 是无状态的，也就是服务器无法自己判断两个请求是否有联系，那么登录之后，以后的接口怎么判断是否登录呢？<br>简单的做法，在数据库中存一个 Token字段，当用户调用登录接口成功的时候，就给该字段设一个值（比如 aes（过期时间）），同时返回给前端，以后前端每次请求带上该值，服务器首先校验是否过期，再校验是否正确，如果校验失败就让其登录。</p>
+</li>
+</ul>
 
         </div>
       </article>
